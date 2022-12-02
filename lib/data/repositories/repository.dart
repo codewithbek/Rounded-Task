@@ -6,6 +6,6 @@ class Repository {
       : _openApiService = openApiService;
   final OpenApiService _openApiService;
 
-  Future<List<TopLevelModel>> getAllData() async =>
+  Future<TopLevelModel> getAllData() async =>
       _openApiService.getAllData();
 }

@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
@@ -9,9 +8,9 @@ import 'package:untitled2/data/repositories/repository.dart';
 part 'get_data_state.dart';
 
 class GetDataCubit extends Cubit<GetDataState> {
-   GetDataCubit({required Repository repository})
+  GetDataCubit({required Repository repository})
       : _repository = repository,
-        super(const GetDataState(currencyData: []));
+        super(GetDataState());
 
   final Repository _repository;
   void getCategories() async {

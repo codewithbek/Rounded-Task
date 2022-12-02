@@ -26,10 +26,10 @@ class _TaskViewState extends State<TaskView> {
           } else if (state.status == FormzStatus.submissionSuccess) {
             return ListView(
               children: List.generate(
-                state.currencyData.length,
+                3,
                 (index) => ListTile(
-                  title: Text(state.currencyData[index].userModel.firstName),
-                  subtitle: Text(state.currencyData[index].userModel.lastName),
+                  title: Text(state.currencyData!.userModel.name),
+                  subtitle: Text(state.currencyData!.userModel.lastName),
                 ),
               ),
             );
