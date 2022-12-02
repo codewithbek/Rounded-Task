@@ -10,7 +10,7 @@ class GetDataState extends Equatable {
 
    TopLevelModel? currencyData;
   final String errorText;
-  final FormzStatus status;
+  late final FormzStatus status;
   final String isInternet;
 
   GetDataState copyWith(
