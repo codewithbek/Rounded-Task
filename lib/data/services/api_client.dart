@@ -7,13 +7,8 @@ import 'network_exception.dart';
 class OpenApiClient {
   Dio dio = Dio(
     BaseOptions(
-        baseUrl: apiBaseUrl,
-        connectTimeout: 25000,
-        receiveTimeout: 20000,
-        headers: {
-          "Authorization":
-              "Client-ID mT8hj53DywChJkbscZAN5aHio9v2M9impW_i-VIc7vs"
-        }),
+      baseUrl: apiBaseUrl,
+    ),
   );
 
   OpenApiClient() {
@@ -50,6 +45,8 @@ class OpenApiClient {
         },
         onRequest: (requestOptions, handler) {
           requestOptions.headers["Accept"] = "application/json";
+          requestOptions.headers["Authorization"] =
+              "Client-ID mT8hj53DywChJkbscZAN5aHio9v2M9impW_i-VIc7vs";
           return handler.next(requestOptions);
         },
         onResponse: (response, handler) async {
