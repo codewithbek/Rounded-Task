@@ -19,7 +19,6 @@ class OpenApiClient {
     dio.interceptors.add(
       (InterceptorsWrapper(
         onError: (error, handler) async {
-          print("ON ERRORGA KIRDI");
           switch (error.type) {
             case DioErrorType.connectTimeout:
             case DioErrorType.sendTimeout:

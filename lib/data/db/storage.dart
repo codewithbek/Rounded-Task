@@ -19,13 +19,11 @@ class StorageRepository {
   }
 
   static Future<bool>? putString({required String key, required String value}) {
-    print('writing $value');
     if (_preferences == null) return null;
     return _preferences!.setString(key, value);
   }
 
   static Future<bool>? putList(String key, List<String> value) {
-    print('writing $value');
     if (_preferences == null) return null;
     return _preferences!.setStringList(key, value);
   }
@@ -61,7 +59,7 @@ class StorageRepository {
     return _preferences!.remove(key);
   }
 
-  static bool getBool(String key, {bool defValue = true}) {
+  static bool getBool(String key, {bool defValue = false}) {
     if (_preferences == null) return defValue;
     return _preferences!.getBool(key) ?? defValue;
   }

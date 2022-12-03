@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled2/cubits/video/video_download_cubit.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
 
@@ -16,11 +20,20 @@ class _VideoViewState extends State<VideoView> {
   @override
   void initState() {
     super.initState();
-    videoPlayerController = VideoPlayerController.network(
-        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")
-      ..initialize().then((value) {
-        setState(() {});
-      });
+    if (context.read<VideoDownloadCubit>().state.status == Status.isNotExist ||
+        context.read<VideoDownloadCubit>().state.status == Status.downloading) {
+      videoPlayerController = VideoPlayerController.network(
+          "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4")
+        ..initialize().then((value) {
+          setState(() {});
+        });
+    } else {
+      var file = context.read<VideoDownloadCubit>().state.newFileLocation;
+      videoPlayerController = VideoPlayerController.file(File(file))
+        ..initialize().then((value) {
+          setState(() {});
+        });
+    }
 
     chewieController = ChewieController(
       videoPlayerController: videoPlayerController,

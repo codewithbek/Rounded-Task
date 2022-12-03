@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled2/cubits/get_data/get_data_cubit.dart';
+import 'package:untitled2/cubits/video/video_download_cubit.dart';
 import 'package:untitled2/data/db/storage.dart';
 import 'package:untitled2/views/task_view.dart';
 
@@ -14,7 +14,6 @@ void main() async{
   await StorageRepository.getInstance();
   OpenApiService openApiService =
       OpenApiService(openApiClient: OpenApiClient());
-  // I will not use Multi repository. However I don't need to it.
   runApp(
     MultiBlocProvider(
       providers: [
@@ -25,6 +24,9 @@ void main() async{
             ),
           )..getCategories(),
         ),
+        BlocProvider<VideoDownloadCubit>(
+          create: (context) => VideoDownloadCubit(),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -34,7 +36,6 @@ void main() async{
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
