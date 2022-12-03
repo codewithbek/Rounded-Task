@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled2/cubits/get_data/get_data_cubit.dart';
 import 'package:untitled2/data/db/storage.dart';
-import 'package:untitled2/view/task_view.dart';
+import 'package:untitled2/views/task_view.dart';
 
 import 'data/repositories/repository.dart';
 import 'data/services/api_client.dart';
